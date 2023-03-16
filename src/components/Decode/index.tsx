@@ -8,8 +8,9 @@ const Decode = () => {
   const handleDecode = (input: string | null) => {
     if (input) {
       try {
-        const decoded = base64.decode(input);
-        setDecoded(decoded);
+        const inputArray = input.split('\n');
+        const decodedArray = inputArray.map((inputStr) => base64.decode(inputStr.trim()));
+        setDecoded(decodedArray.join('\n'));
       } catch (e) {
         setDecoded('invalid base64 string');
       }
@@ -34,7 +35,7 @@ const Decode = () => {
       <div className='group relative'>
         <div className='animate-tilt absolute -inset-1 rounded-lg bg-gradient-to-r from-pink-600 to-purple-600 opacity-75 blur transition duration-1000 group-hover:opacity-100 group-hover:duration-200'></div>
         <button
-          className='btn relative rounded-sm px-7 py-4 leading-none bg-slate-900 border-slate-900'
+          className='btn relative rounded-sm border-slate-900 bg-slate-900 px-7 py-4 leading-none'
           onClick={() => {
             handleDecode(input);
           }}

@@ -9,7 +9,13 @@ const Decode = () => {
     if (input) {
       try {
         const inputArray = input.split('\n');
-        const decodedArray = inputArray.map((inputStr) => base64.decode(inputStr.trim()));
+        const decodedArray = inputArray.map((inputStr) => {
+          try {
+            return base64.decode(inputStr.trim());
+          } catch (e) {
+            return 'invalid base64 string';
+          }
+        });
         setDecoded(decodedArray.join('\n'));
       } catch (e) {
         setDecoded('invalid base64 string');

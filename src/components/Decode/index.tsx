@@ -39,7 +39,7 @@ const Decode = () => {
         ></textarea>
       </div>
       <button
-        className='rounded-md bg-white p-4 leading-none text-black'
+        className='rounded-md bg-white p-4 leading-none text-black hover:bg-indigo-300'
         onClick={() => {
           handleDecode(input);
         }}

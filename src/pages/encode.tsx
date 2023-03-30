@@ -14,10 +14,12 @@ const EncodePage: NextPage = () => {
       </Head>
       <main className='flex flex-col items-center justify-center'>
         <div className='container flex flex-col items-center justify-center gap-12 px-4 py-16 '>
-          <h1 className='text-4xl font-extrabold tracking-tight sm:text-[5rem]'>
+          <h1 className='text-4xl font-extrabold tracking-tight text-white sm:text-[5rem]'>
             Encode <span className='text-indigo-500'>base64</span>
           </h1>
-          <Link href='/'>Switch to decode</Link>
+          <Link className='text-white' href='/'>
+            Switch to decode
+          </Link>
           <Encode />
         </div>
       </main>

@@ -13,11 +13,11 @@ const EncodePage: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main className='flex flex-col items-center justify-center'>
-        <div className='container flex flex-col items-center justify-center gap-12 px-4 py-16 '>
-          <h1 className='text-4xl font-extrabold tracking-tight text-white sm:text-[5rem]'>
+        <div className='container flex flex-col items-center justify-center gap-12 px-4 py-8'>
+          <h1 className='text-4xl font-extrabold tracking-tight text-white sm:text-7xl'>
             Encode <span className='text-indigo-500'>base64</span>
           </h1>
-          <Link className='text-white' href='/'>
+          <Link className='text-white underline' href='/'>
             Switch to decode
           </Link>
           <Encode />

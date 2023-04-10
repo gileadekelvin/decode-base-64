@@ -11,7 +11,8 @@ const Decode = () => {
         const inputArray = input.split('\n');
         const decodedArray = inputArray.map((inputStr) => {
           try {
-            return base64.decode(inputStr.trim());
+            const stringToDecode = decodeURIComponent(inputStr.trim());
+            return base64.decode(stringToDecode);
           } catch (e) {
             return 'invalid base64 string';
           }

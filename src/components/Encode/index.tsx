@@ -1,9 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import base64 from 'base-64';
 
 const Encode = () => {
+  const inputReference = useRef<HTMLTextAreaElement | null>(null);
+
   const [input, setInput] = useState<string | null>(null);
   const [encoded, setEncoded] = useState<string | null>(null);
+
+  useEffect(() => {
+    inputReference?.current?.focus();
+  }, []);
 
   const handleEncode = (input: string | null) => {
     if (input) {
@@ -23,11 +29,17 @@ const Encode = () => {
           <span className='font-medium text-white'>Your string to encode</span>
         </label>
         <textarea
+          ref={inputReference}
           rows={5}
           className='rounded-md border-2 border-gray-600 bg-transparent p-2 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500'
-          placeholder='place the string to be encoded here...'
+          placeholder='Place the string and use ctrl + enter to encode'
           onChange={(event) => {
             setInput(event.target.value);
+          }}
+          onKeyDown={(key) => {
+            if (key.ctrlKey && key.key === 'Enter') {
+              handleEncode(input);
+            }
           }}
         ></textarea>
       </div>
@@ -46,6 +58,9 @@ const Encode = () => {
           </label>
           <textarea
             value={encoded}
+            onChange={() => {
+              return;
+            }}
             rows={5}
             className='rounded-md border-2 border-gray-600 bg-transparent p-2 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500'
             placeholder='the result will be displayed here...'
